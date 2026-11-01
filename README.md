@@ -4,6 +4,10 @@ I created this project to familiarize myself better with React, JavaScript, CSS,
 
 This is a responsive Pokédex web application powered by the [PokéAPI](https://pokeapi.co/). I built it as a practical project to explore how a React application can consume external data and present it through an accessible, responsive interface.
 
+## Live Demo
+
+You can visit the deployed application at [pokedex-project-jade.vercel.app](https://pokedex-project-jade.vercel.app/).
+
 ## Features
 
 - Browse Pokémon with their names, Pokédex numbers, and official artwork
