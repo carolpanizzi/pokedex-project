@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { ChevronDown, ChevronUp, Search, SlidersHorizontal, Sparkles } from 'lucide-react'
+import { Search } from 'lucide-react'
 import './styles.css'
 
 const API_URL = 'https://pokeapi.co/api/v2/pokemon'
@@ -58,7 +58,6 @@ function App() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [selectedPokemon, setSelectedPokemon] = useState(null)
-  const [showFilters, setShowFilters] = useState(false)
 
   useEffect(() => {
     const fetchPokemon = async () => {
@@ -98,7 +97,7 @@ function App() {
 
       <section className="hero">
         <div className="hero-copy">
-          <p className="eyebrow"><Sparkles size={15} /> The Pokémon world in the palm of your hand</p>
+          <p className="eyebrow">The Pokémon world in the palm of your hand</p>
           <h1>Find your<br /><em>favorite</em> Pokémon.</h1>
           <p className="hero-description">Explore, discover, and get to know every Pokémon. A Pokédex made for adventure lovers.</p>
           <button className="primary-button" onClick={() => document.getElementById('explore')?.scrollIntoView({ behavior: 'smooth' })}>Explore Pokédex <span>↗</span></button>
@@ -114,9 +113,8 @@ function App() {
         <div className="section-heading"><div><p className="eyebrow">Your collection</p><h2>Discover new Pokémon</h2></div><p className="result-count">{filteredPokemon.length} results</p></div>
         <div className="toolbar">
           <label className="search-box"><Search size={20} /><input value={search} onChange={(event) => { setSearch(event.target.value); setVisibleCount(LIMIT) }} placeholder="Search by name or number..." /></label>
-          <button className="filter-toggle" onClick={() => setShowFilters(!showFilters)}><SlidersHorizontal size={18} /> Filter by type {showFilters ? <ChevronUp size={16} /> : <ChevronDown size={16} />}</button>
         </div>
-        <div className={`type-filters ${showFilters ? 'is-open' : ''}`} id="types">{TYPES.map((type) => <button className={selectedType === type ? 'active' : ''} key={type} onClick={() => { setSelectedType(type); setVisibleCount(LIMIT) }}>{type}</button>)}</div>
+        <div className="type-filters is-open" id="types">{TYPES.map((type) => <button className={selectedType === type ? 'active' : ''} key={type} onClick={() => { setSelectedType(type); setVisibleCount(LIMIT) }}>{type}</button>)}</div>
         {loading && <div className="status-message">Loading your Pokédex...</div>}
         {error && <div className="status-message error">{error}</div>}
         {!loading && !error && !visiblePokemon.length && <div className="status-message">No Pokémon found. Try another search.</div>}
