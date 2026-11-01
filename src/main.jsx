@@ -92,7 +92,7 @@ function App() {
     <main>
       <header className="site-header">
         <a className="brand" href="/" aria-label="Pokédex home"><span className="brand-mark">◒</span><span>Pokédex</span></a>
-        <nav><a href="#explore">Explore</a><a href="#types">Types</a><a href="#about">About</a></nav>
+        <nav><a href="#explore">Explore</a><a href="#types">Types</a></nav>
         <button className="header-cta" onClick={() => document.getElementById('explore')?.scrollIntoView({ behavior: 'smooth' })}>Start exploring <span>→</span></button>
       </header>
 
@@ -123,7 +123,6 @@ function App() {
         <div className="pokemon-grid">{visiblePokemon.map((item) => <PokemonCard key={item.id} pokemon={item} onSelect={setSelectedPokemon} />)}</div>
         {!loading && visibleCount < filteredPokemon.length && <button className="load-more" onClick={() => setVisibleCount((count) => count + LIMIT)}>Load more <span>↓</span></button>}
       </section>
-      <footer id="about"><div className="brand"><span className="brand-mark">◒</span><span>Pokédex</span></div><p>Made for trainers, by trainers.</p><small>Data provided by PokéAPI</small></footer>
       <DetailModal pokemon={selectedPokemon} onClose={() => setSelectedPokemon(null)} />
     </main>
   )
